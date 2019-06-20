@@ -1,0 +1,1 @@
+# haskellstack-docker
