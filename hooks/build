@@ -1,0 +1,6 @@
+#! /bin/bash -
+
+env
+
+docker build --no-cache -t ${IMAGE_NAME} --build-arg snapshot=${DOCKER_TAG} .
+
