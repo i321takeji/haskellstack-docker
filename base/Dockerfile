@@ -3,8 +3,8 @@ FROM ubuntu:18.04
 ENV DEBCONF_NOWARNINGS yes
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN sed -i.bak -e "s%http://.*.ubuntu.com/ubuntu/%http://ftp.jaist.ac.jp/pub/Linux/ubuntu/%g" /etc/apt/sources.list \
-&& apt-get update && apt-get install -y --no-install-recommends \
+#RUN sed -i.bak -e "s%http://.*.ubuntu.com/ubuntu/%http://ftp.jaist.ac.jp/pub/Linux/ubuntu/%g" /etc/apt/sources.list
+RUN apt-get update && apt-get install -y --no-install-recommends \
   ca-certificates \
   curl \
   gcc \
@@ -20,4 +20,5 @@ RUN sed -i.bak -e "s%http://.*.ubuntu.com/ubuntu/%http://ftp.jaist.ac.jp/pub/Lin
 && apt-get clean && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/* \
 && curl -sSL https://get.haskellstack.org/ | sh
 
+RUN echo 'eval "$(stack --bash-completion-script stack)"' >> /etc/bash.bashrc
 ENV PATH $PATH:/root/.local/bin
