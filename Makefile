@@ -12,3 +12,6 @@ build-stack: get-snapshot-list
 	$(eval STACK_SNAPSHOT := $(shell jq -r '.lts' snaphosts.json))
 	cd stack && docker build --no-cache -t $(DOCKER_TAG):$(STACK_SNAPSHOT) --build-arg snapshot=$(STACK_SNAPSHOT) .
 	docker image prune -f
+
+clean:
+	rm -f snaphosts.json
